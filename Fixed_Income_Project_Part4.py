@@ -27,7 +27,7 @@ def Valuation(Swap_rate, IRR, Black76, SABR, alpha, rho, nu, beta, N,m, T,g, OIS
 	if plus==False:
 		V=OISD.iloc[T*2-1,0]*(g(F)+IRR(Swap_rate,m,N)*(integrate.quad(lambda K:integrant(K)[0],0,F)[0]+integrate.quad(lambda K:integrant(K)[1],F,np.inf)[0]))
 	if plus==True:
-		sabrvol=SABR(Swap_rate,0.0016, T,alpha,beta,rho,nu)
+		sabrvol=SABR(Swap_rate,.04**(.5), T,alpha,beta,rho,nu)
 		def h(g,x):
 			return g(x)/IRR(x,m,N)
 		dhk=derivative(lambda x: h(g,x),0.0016,dx=0.0001,n=1)
