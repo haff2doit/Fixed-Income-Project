@@ -138,7 +138,7 @@ if __name__ == '__main__':
         Beta.append(beta1)
     #calibrate SABR model
         strikes_all=np.array(list(ReceiverK)+[0]+list(PayerK))+ATMK
-        res2= least_squares(lambda x: sabrcalibration(x, strikes_all, vols, S, T), initialGuess2)
+        res2= least_squares(lambda x: sabrcalibration(x, strikes_all, vols, S, T), initialGuess2,max_nfev=3000)
         alpha=res2.x[0]
         rho=res2.x[1]
         nu=res2.x[2]
