@@ -17,7 +17,7 @@ Nu=pd.read_excel('nu.xlsx',header=0,index_col=0)
 def IRR(Swap_rate,m,N):
 	irr=0
 	for i in range(1,int(N*m+1)):
-		irr+=(1/m)/(1+Swap_rate/m)**i 
+		irr+=1/(1+Swap_rate/m)**i 
 	return irr
 
 def CMSrate(Swap_rate, IRR, Black76, SABR, alpha, rho, nu, beta, N,m, T,g):
